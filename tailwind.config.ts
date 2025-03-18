@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				sleepico: {
+					'blue': '#4A6FA5',
+					'light-blue': '#7D9AC9',
+					'purple': '#9376E0',
+					'light-purple': '#B4A0E5',
+					'green': '#6BB77B',
+					'light-green': '#A2D5AC',
+					'cream': '#F3F0EA',
+					'light-gray': '#E8EBF2',
 				}
 			},
 			borderRadius: {
@@ -84,11 +95,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-gentle': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.05)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-gentle': 'pulse-gentle 3s infinite ease-in-out',
+				'fade-in': 'fade-in 0.5s ease-out'
+			},
+			fontFamily: {
+				'sans': ['Inter', 'sans-serif'],
+				'heading': ['Poppins', 'sans-serif']
 			}
 		}
 	},
