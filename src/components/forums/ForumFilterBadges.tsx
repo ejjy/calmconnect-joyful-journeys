@@ -24,7 +24,7 @@ const ForumFilterBadges: React.FC<ForumFilterBadgesProps> = ({
           key={filter.id}
           variant="outline" 
           className={`bg-white cursor-pointer hover:bg-gray-100 transition-colors ${
-            activeFilter === filter.id ? 'border-sleepico-blue text-sleepico-blue' : ''
+            activeFilter === filter.id ? 'border-blue-500 text-blue-500' : ''
           }`}
           onClick={() => onFilterChange(filter.id)}
         >

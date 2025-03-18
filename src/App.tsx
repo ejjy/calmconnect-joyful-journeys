@@ -8,6 +8,7 @@ import Dashboard from "./pages/Index";
 import Forums from "./pages/Forums";
 import Counselors from "./pages/Counselors";
 import NotFound from "./pages/NotFound";
+import ForumPost from "./pages/ForumPost";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/forums" element={<Forums />} />
+          <Route path="/forums/post/:id" element={<ForumPost />} />
           <Route path="/counselors" element={<Counselors />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
