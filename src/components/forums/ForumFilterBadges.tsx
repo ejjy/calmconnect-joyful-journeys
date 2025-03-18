@@ -2,18 +2,35 @@
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 
-const ForumFilterBadges: React.FC = () => {
+interface ForumFilterBadgesProps {
+  activeFilter?: string;
+  onFilterChange?: (filter: string) => void;
+}
+
+const ForumFilterBadges: React.FC<ForumFilterBadgesProps> = ({ 
+  activeFilter = 'popular',
+  onFilterChange = () => {}
+}) => {
+  const filters = [
+    { id: 'popular', label: 'Popular' },
+    { id: 'recent', label: 'Recent' },
+    { id: 'unanswered', label: 'Unanswered' }
+  ];
+
   return (
     <div className="flex flex-wrap gap-2 mb-4">
-      <Badge variant="outline" className="bg-white">
-        Popular
-      </Badge>
-      <Badge variant="outline" className="bg-white">
-        Recent
-      </Badge>
-      <Badge variant="outline" className="bg-white">
-        Unanswered
-      </Badge>
+      {filters.map(filter => (
+        <Badge 
+          key={filter.id}
+          variant="outline" 
+          className={`bg-white cursor-pointer hover:bg-gray-100 transition-colors ${
+            activeFilter === filter.id ? 'border-sleepico-blue text-sleepico-blue' : ''
+          }`}
+          onClick={() => onFilterChange(filter.id)}
+        >
+          {filter.label}
+        </Badge>
+      ))}
     </div>
   );
 };
