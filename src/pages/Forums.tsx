@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import { Input } from '@/components/ui/input';
@@ -21,7 +20,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '1',
     title: 'How do you manage exam anxiety?',
-    excerpt: "I have finals coming up and my anxiety is through the roof. Any tips for staying calm during exams? I've tried deep breathing but it just doesn't seem to work for me. Looking for other strategies that might help.",
+    excerpt: "I have finals coming up and my anxiety is through the roof. Any tips for staying calm during exams? I've tried deep breathing but it just doesn't seem towork for me. Looking for other strategies that might help.",
     category: 'Stress Management',
     comments: 24,
     upvotes: 45,
