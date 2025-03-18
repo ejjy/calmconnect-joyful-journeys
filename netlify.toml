@@ -1,7 +1,5 @@
 
 # This file tells Netlify how to handle client-side routing
-# It redirects all routes to index.html so that React Router can handle them
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
