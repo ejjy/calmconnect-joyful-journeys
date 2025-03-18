@@ -23,7 +23,7 @@ const recentForumPosts: ForumPostProps[] = [
   {
     id: '2',
     title: 'Finding balance between studies and self-care',
-    excerpt: 'Lately I've been struggling to find time for myself while keeping up with coursework. How do you all manage?',
+    excerpt: "Lately I've been struggling to find time for myself while keeping up with coursework. How do you all manage?",
     author: 'Jamie P.',
     category: 'Self Care',
     comments: 12,
@@ -33,7 +33,7 @@ const recentForumPosts: ForumPostProps[] = [
   {
     id: '3',
     title: 'Career anxiety as graduation approaches',
-    excerpt: 'Graduation is in 3 months and I'm feeling lost about what to do next. Anyone else feeling the same?',
+    excerpt: "Graduation is in 3 months and I'm feeling lost about what to do next. Anyone else feeling the same?",
     author: 'Alex W.',
     category: 'Career',
     comments: 18,

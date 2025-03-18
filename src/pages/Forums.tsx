@@ -21,7 +21,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '1',
     title: 'How do you manage exam anxiety?',
-    excerpt: 'I have finals coming up and my anxiety is through the roof. Any tips for staying calm during exams? I've tried deep breathing but it just doesn't seem to work for me. Looking for other strategies that might help.',
+    excerpt: "I have finals coming up and my anxiety is through the roof. Any tips for staying calm during exams? I've tried deep breathing but it just doesn't seem to work for me. Looking for other strategies that might help.",
     category: 'Stress Management',
     comments: 24,
     upvotes: 45,
@@ -31,7 +31,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '2',
     title: 'Finding balance between studies and self-care',
-    excerpt: 'Lately I've been struggling to find time for myself while keeping up with coursework. How do you all manage to maintain a healthy work-life balance while in school?',
+    excerpt: "Lately I've been struggling to find time for myself while keeping up with coursework. How do you all manage to maintain a healthy work-life balance while in school?",
     author: 'Jamie P.',
     category: 'Self Care',
     comments: 12,
@@ -41,7 +41,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '3',
     title: 'Career anxiety as graduation approaches',
-    excerpt: 'Graduation is in 3 months and I'm feeling lost about what to do next. Anyone else feeling the same? How are you dealing with the uncertainty?',
+    excerpt: "Graduation is in 3 months and I'm feeling lost about what to do next. Anyone else feeling the same? How are you dealing with the uncertainty?",
     author: 'Alex W.',
     category: 'Career',
     comments: 18,
@@ -51,7 +51,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '4',
     title: 'Best study techniques for online classes',
-    excerpt: 'I'm taking all online classes this semester and finding it hard to stay focused. What study techniques have worked best for you in virtual learning environments?',
+    excerpt: "I'm taking all online classes this semester and finding it hard to stay focused. What study techniques have worked best for you in virtual learning environments?",
     author: 'Taylor K.',
     category: 'Study Tips',
     comments: 32,
@@ -61,7 +61,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '5',
     title: 'Making friends in a new city',
-    excerpt: 'Just moved to a new city for university and don't know anyone. Feeling pretty lonely. Any advice on making friends as an introvert?',
+    excerpt: "Just moved to a new city for university and don't know anyone. Feeling pretty lonely. Any advice on making friends as an introvert?",
     author: 'Jordan M.',
     category: 'Social Connections',
     comments: 15,
@@ -71,7 +71,7 @@ const forumPosts: ForumPostProps[] = [
   {
     id: '6',
     title: 'How to prepare for internship interviews',
-    excerpt: 'I've got several internship interviews coming up and I'm nervous. Anyone have tips for preparing and making a good impression?',
+    excerpt: "I've got several internship interviews coming up and I'm nervous. Anyone have tips for preparing and making a good impression?",
     category: 'Career',
     comments: 27,
     upvotes: 41,
