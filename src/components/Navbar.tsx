@@ -1,12 +1,30 @@
 
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Moon, Sun, User } from 'lucide-react';
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   
   const isActive = (path: string) => location.pathname === path;
   
@@ -15,6 +33,47 @@ const Navbar: React.FC = () => {
     { name: 'Forums', path: '/forums' },
     { name: 'Counselors', path: '/counselors' },
   ];
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // This is a mock login - in a real app, you would connect to an authentication service
+    if (email && password) {
+      toast({
+        title: "Login successful",
+        description: "Welcome back to Sleepico!",
+      });
+      setLoginDialogOpen(false);
+      setEmail('');
+      setPassword('');
+    } else {
+      toast({
+        title: "Login failed",
+        description: "Please enter your email and password",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleSignup = (e: React.FormEvent) => {
+    e.preventDefault();
+    // This is a mock signup - in a real app, you would connect to an authentication service
+    if (name && email && password) {
+      toast({
+        title: "Account created",
+        description: "Welcome to Sleepico! Your account has been created successfully.",
+      });
+      setSignupDialogOpen(false);
+      setName('');
+      setEmail('');
+      setPassword('');
+    } else {
+      toast({
+        title: "Signup failed",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+    }
+  };
 
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -54,12 +113,16 @@ const Navbar: React.FC = () => {
               <Button
                 variant="ghost"
                 className="rounded-full text-gray-600 hover:text-sleepico-blue"
+                onClick={() => setLoginDialogOpen(true)}
               >
                 <User className="mr-2 h-4 w-4" />
                 Login
               </Button>
               
-              <Button className="bg-gradient-to-r from-sleepico-blue to-sleepico-purple hover:opacity-90 transition-opacity">
+              <Button 
+                className="bg-gradient-to-r from-sleepico-blue to-sleepico-purple hover:opacity-90 transition-opacity"
+                onClick={() => setSignupDialogOpen(true)}
+              >
                 Sign Up
               </Button>
             </div>
@@ -103,19 +166,126 @@ const Navbar: React.FC = () => {
               <Button
                 variant="ghost"
                 className="w-full justify-start text-gray-600 hover:text-sleepico-blue"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setLoginDialogOpen(true);
+                }}
               >
                 <User className="mr-2 h-4 w-4" />
                 Login
               </Button>
-              <Button className="w-full bg-gradient-to-r from-sleepico-blue to-sleepico-purple hover:opacity-90 transition-opacity">
+              <Button 
+                className="w-full bg-gradient-to-r from-sleepico-blue to-sleepico-purple hover:opacity-90 transition-opacity"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setSignupDialogOpen(true);
+                }}
+              >
                 Sign Up
               </Button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Login Dialog */}
+      <Dialog open={loginDialogOpen} onOpenChange={setLoginDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Login to Sleepico</DialogTitle>
+            <DialogDescription>
+              Enter your credentials to access your account
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleLogin}>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="your@email.com" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" type="button" onClick={() => setLoginDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit">Login</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Signup Dialog */}
+      <Dialog open={signupDialogOpen} onOpenChange={setSignupDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Create an Account</DialogTitle>
+            <DialogDescription>
+              Join Sleepico to get personalized support for your mental wellness journey
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSignup}>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="name">Name</Label>
+                <Input 
+                  id="name" 
+                  placeholder="Your name" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="signup-email">Email</Label>
+                <Input 
+                  id="signup-email" 
+                  type="email" 
+                  placeholder="your@email.com" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="signup-password">Password</Label>
+                <Input 
+                  id="signup-password" 
+                  type="password" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" type="button" onClick={() => setSignupDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit">Create account</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 };
 
 export default Navbar;
+
